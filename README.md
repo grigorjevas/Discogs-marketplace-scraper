@@ -19,13 +19,12 @@ df = scraper.fetch_items
 ```
 
 `DiscogsMarketPlaceScraper` params:
-- `style` - (str) any style from the official Discogs [styles list]
-  (https://support.discogs.com/hc/en-us/articles/360005055213-Database-Guidelines-9-Genres-Styles#genres)
+- `style` - (str) any style from the official Discogs [styles list](https://blog.discogs.com/en/genres-and-styles/)
 - `items_to_fetch` - (int) a number of items to fetch
 - `export_to_csv` - (bool), default = False
 
 `DiscogsMarketPlaceScraper` functions:
-- `fetch_items` - returns pandas dataframe and optionally exports a csv file to assets folder
+- `fetch_items` - returns pandas dataframe and optionally exports a csv file to working dir
 - `fetch_item_links` - iterates through pagination and creates a list of item links
 - `validate_max_items` - validates number of items to fetch against items available for particular style
 - `validate_style` - validates requested style against list of available styles
@@ -33,7 +32,7 @@ df = scraper.fetch_items
 - `items_per_page` - counts how many items per page should be requested
 - `load_url` - loads a url and returns BeautifulSoup object
 - `parse_item` - uses parser functions to parse required fields from the item page
-- `export_to_csv` - exports a csv file to assets dir
+- `export_to_csv` - exports a csv file to current working dir
 
 
 ## Troubleshooting
