@@ -3,8 +3,8 @@
 
 ## Introduction
 This program will download items of specific style from Discogs Marketplace, return a pandas dataframe and 
-optionally save the dump to csv file. Please note it is rate limited, therefore gathering a large amount of data might 
-take a vary long time.
+optionally save the data to csv file. Please note it is rate limited to avoid blacklisting, therefore gathering a 
+large amount of data might take a very long time.
 
 ## Installation
 ```

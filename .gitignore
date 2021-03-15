@@ -130,5 +130,5 @@ dmypy.json
 .idea
 
 config.py
-/assets/*.csv
+#/assets/*.csv
 /main.py
