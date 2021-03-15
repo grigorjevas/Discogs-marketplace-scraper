@@ -1,5 +1,5 @@
 # Discogs marketplace scraper
-![Discogs](assets/logo.jpg)
+![Discogs](assets/discogs_logo.jpg)
 
 ## Introduction
 This program will download items of specific style from Discogs Marketplace, return a pandas dataframe and 
