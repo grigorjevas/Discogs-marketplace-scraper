@@ -100,6 +100,8 @@ class DiscogsMarketplaceParser:
 
     @property
     def sleeve_condition(self) -> str:
+        if not self.__soup.select("strong:-soup-contains('Sleeve:')"):
+            return "N/A"
         return self.__soup.select("strong:-soup-contains('Sleeve:')")[0].next_sibling.strip()
 
     @property
