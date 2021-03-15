@@ -165,12 +165,12 @@ class DiscogsMarketplaceScraper:
 
     def export_to_csv(self, df: pd.DataFrame) -> None:
         """
-        Exports a dataframe to a .csv file in data folder.
+        Exports a dataframe to a .csv file in working dir.
 
         :param df: pandas dataframe
         :return: None
         """
         now = datetime.now()
         timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
-        df.to_csv(f"assets/{self.__style}_{timestamp}.csv", index=False, header=self.__columns)
+        df.to_csv(f"{self.__style}_{timestamp}.csv", index=False, header=self.__columns)
         return
