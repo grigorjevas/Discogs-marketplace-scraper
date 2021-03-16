@@ -107,3 +107,9 @@ class DiscogsMarketplaceParser:
     @property
     def release_page_url(self) -> str:
         return f'https://discogs.com{self.__soup.select("a.release-page")[0]["href"]}'
+
+    @property
+    def item_exists(self) -> bool:
+        if not self.__soup.select("div.release_info_buttons > div"):
+            return False
+        return True

@@ -47,7 +47,9 @@ class DiscogsMarketplaceScraper:
             time.sleep(random.randint(1, 2))
             url = f"https://www.discogs.com{item_link['href']}"
             print(f"Processing item {count}/{len(item_links)}: {url}")
-            records.extend([self.parse_item(self.load_url(url))])
+            item = self.parse_item(self.load_url(url))
+            if item:
+                records.extend([item])
             count += 1
 
         df = pd.DataFrame(records, columns=self.__columns)
@@ -147,21 +149,23 @@ class DiscogsMarketplaceScraper:
         :return: tuple
         """
         parse = parser.DiscogsMarketplaceParser(soup)
-        return parse.artist, \
-            parse.title, \
-            parse.label, \
-            parse.release_format, \
-            parse.number_of_tracks, \
-            parse.release_date, \
-            parse.price, \
-            parse.rating, \
-            parse.votes, \
-            parse.have, \
-            parse.want, \
-            parse.limited_edition, \
-            parse.media_condition, \
-            parse.sleeve_condition, \
-            parse.release_page_url
+        if parse.item_exists:
+            return parse.artist, \
+                parse.title, \
+                parse.label, \
+                parse.release_format, \
+                parse.number_of_tracks, \
+                parse.release_date, \
+                parse.price, \
+                parse.rating, \
+                parse.votes, \
+                parse.have, \
+                parse.want, \
+                parse.limited_edition, \
+                parse.media_condition, \
+                parse.sleeve_condition, \
+                parse.release_page_url
+        return ()
 
     def export_to_csv(self, df: pd.DataFrame) -> None:
         """
