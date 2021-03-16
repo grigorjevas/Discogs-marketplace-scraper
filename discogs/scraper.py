@@ -87,7 +87,7 @@ class DiscogsMarketplaceScraper:
               f"&limit={self.items_per_page}" \
               f"&currency={self.__currency}" \
               f"&format={self.__format}" \
-              f"&style={self.__style}" \
+              f"&style={self.__style.title().replace(' ', '+')}" \
               f"&page=1"
         soup = self.load_url(url)
         max_items = int(re.search("of (.*)", soup.find("strong", class_="pagination_total").text.strip())
