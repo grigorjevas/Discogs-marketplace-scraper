@@ -25,9 +25,16 @@ class DiscogsMarketplaceParser:
         :param soup: BeautifulSoup object
         """
         self.__soup = soup
-        self.__ratings_section = self.__soup.select("div.release_info_buttons > div")[0].text
+        if self.item_exists:
+            self.__ratings_section = self.__soup.select("div.release_info_buttons > div")[0].text
         self.__release_info = (" ".join(self.__soup.select("div.head:-soup-contains('Format')")[0]
                                         .find_next_sibling("div").text.split()))
+
+    @property
+    def item_exists(self) -> bool:
+        if not self.__soup.select("div.release_info_buttons > div"):
+            return False
+        return True
 
     @property
     def artist(self) -> str:
@@ -107,9 +114,3 @@ class DiscogsMarketplaceParser:
     @property
     def release_page_url(self) -> str:
         return f'https://discogs.com{self.__soup.select("a.release-page")[0]["href"]}'
-
-    @property
-    def item_exists(self) -> bool:
-        if not self.__soup.select("div.release_info_buttons > div"):
-            return False
-        return True
