@@ -132,3 +132,4 @@ dmypy.json
 config.py
 #/assets/*.csv
 /main.py
+/assets/
