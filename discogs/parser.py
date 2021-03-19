@@ -27,8 +27,8 @@ class DiscogsMarketplaceParser:
         self.__soup = soup
         if self.item_exists:
             self.__ratings_section = self.__soup.select("div.release_info_buttons > div")[0].text
-        self.__release_info = (" ".join(self.__soup.select("div.head:-soup-contains('Format')")[0]
-                                        .find_next_sibling("div").text.split()))
+            self.__release_info = (" ".join(self.__soup.select("div.head:-soup-contains('Format')")[0]
+                                            .find_next_sibling("div").text.split()))
 
     @property
     def item_exists(self) -> bool:
