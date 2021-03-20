@@ -34,12 +34,16 @@ df = scraper.fetch_items
 - `parse_item` - uses parser functions to parse required fields from the item page
 - `export_to_csv` - exports a csv file to current working dir
 
+#### Limitations
+You can only scrape a maximum of 10 000 items in one go due to the way the website pagination is built. 
+Anything past page 40 will result in a 404 error, so unless Discogs fix this bug, 10 000 is the limit. 
+
 
 ## Troubleshooting
 If you encounter an `IndexError` in Google Colab, please check your package versions against `requirements.txt`, it is 
-very likely that you might need to install newer version of BeautifulSoup. You can do it like so:
+very likely that you might need to install newer version of a package. You can do it like so:
 ```
-! pip install beautifulsoup4==4.9.3
+! pip install packagename==version
 ```
 
 ## License
